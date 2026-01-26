@@ -5,6 +5,6 @@ from .views import lista_productos
 from . import views
 
 urlpatterns = [
+        path("productos/<str:identificador>", views.producto_individual),
         path("productos/", lista_productos),
-        path("<str:name>/", hello_world),
 ]

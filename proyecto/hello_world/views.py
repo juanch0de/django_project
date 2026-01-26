@@ -22,3 +22,25 @@ def lista_productos(request):
     ]
 
     return JsonResponse(data, safe=False)
+
+def producto_individual(request, identificador):
+    try:
+        if identificador.isdigit():
+            producto = Producto.objects.get(id=int(identificador))
+
+        else:
+            producto = Producto.objects.get(codigo=identificador)
+
+    except Producto.DoesNotExist:
+        raise Http404("Producto no encontrado")
+
+    data = {
+            "id": producto.id,
+            "codigo": producto.codigo,
+            "nombre": producto.codigo,
+            "descripcion": producto.descripcion,
+            "precio": producto.precio,
+            "cantidad": producto.cantidad, 
+    }
+
+    return JsonResponse(data)
