@@ -11,6 +11,7 @@ def lista_productos(request):
 
     data = [
         {
+            "id": p.id,
             "codigo": p.codigo,
             "nombre": p.nombre,
             "descripcion": p.descripcion,
